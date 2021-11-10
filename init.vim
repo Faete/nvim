@@ -104,7 +104,6 @@ let mapleader = " "
 nnoremap <TAB> :BufferNext<CR>
 nnoremap <S-TAB> :BufferPrevious<CR>
 nnoremap <leader>q :BufferClose<CR>
-tnoremap <ESC> <C-\><C-n>
 nnoremap <M-h> <C-w>h
 nnoremap <M-l> <C-w>l
 nnoremap <M-j> <C-w>j
