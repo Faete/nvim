@@ -1,20 +1,22 @@
 call plug#begin('~/.vim/plugged')
-    Plug 'neoclide/coc.nvim', {'branch': 'release'}
-    Plug 'windwp/nvim-ts-autotag'
-    Plug 'jiangmiao/auto-pairs'
-    Plug 'github/copilot.vim'
     Plug 'xuhdev/vim-latex-live-preview'
-    Plug 'tomlion/vim-solidity'
     Plug 'tpope/vim-fugitive'
     Plug 'tpope/vim-commentary'
     Plug 'kyazdani42/nvim-tree.lua'
-    Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
     Plug 'akinsho/toggleterm.nvim'
     Plug 'famiu/bufdelete.nvim'
     Plug 'nvim-lua/plenary.nvim'
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'justinmk/vim-sneak'
     Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+    " ***HIGHLIGHTING***
+    Plug 'tomlion/vim-solidity'
+    Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
+    " ***AUTO COMPLETE***
+    Plug 'windwp/nvim-ts-autotag'
+    Plug 'jiangmiao/auto-pairs'
+    Plug 'neoclide/coc.nvim', {'branch': 'release'}
+    Plug 'github/copilot.vim'
     " ***COLORSCHEMES***
     Plug 'morhetz/gruvbox'
     Plug 'sainnhe/gruvbox-material'
