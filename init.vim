@@ -111,6 +111,7 @@ nnoremap <C-n> :NvimTreeToggle<CR>
 
 " toggleterm.nvim
 nnoremap <leader>t :ToggleTerm size=10<CR>
+nnoremap <leader>g :lua _lazygit_toggle()<CR>i
 
 "telescope
 nnoremap <leader>s :Telescope<CR>
