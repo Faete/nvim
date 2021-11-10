@@ -5,6 +5,8 @@ call plug#begin('~/.vim/plugged')
     Plug 'github/copilot.vim'
     Plug 'xuhdev/vim-latex-live-preview'
     Plug 'tomlion/vim-solidity'
+    Plug 'tpope/vim-fugitive'
+    Plug 'tpope/vim-commentary'
     Plug 'kyazdani42/nvim-tree.lua'
     Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
     Plug 'akinsho/toggleterm.nvim'
