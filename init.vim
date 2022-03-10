@@ -9,6 +9,11 @@ call plug#begin('~/.vim/plugged')
     Plug 'nvim-telescope/telescope.nvim'
     Plug 'justinmk/vim-sneak'
     Plug 'dccsillag/magma-nvim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'tpope/vim-sleuth'
+    Plug 'tpope/vim-surround'
+    Plug 'folke/todo-comments.nvim'
+    " *** WEB DEV ***
+    Plug 'mattn/emmet-vim'
     " ***HIGHLIGHTING***
     Plug 'tomlion/vim-solidity'
     Plug 'nvim-treesitter/nvim-treesitter', { 'branch': '0.5-compat', 'do': ':TSUpdate' }
@@ -29,6 +34,7 @@ call plug#begin('~/.vim/plugged')
     Plug 'ryanoasis/vim-devicons'
     Plug 'kyazdani42/nvim-web-devicons'
     Plug 'rcarriga/nvim-notify'
+    Plug 'frazrepo/vim-rainbow'
 call plug#end()
 
 lua require'pluginsettings'.initialize()
@@ -56,6 +62,13 @@ hi BufferInactiveSign guibg=None
 let g:ale_python_auto_pipenv = 1
 let g:ale_python_pylint_change_directory=0
 let g:ale_python_flake8_change_directory=0
+let g:rainbow_active = 1
+
+" Highlight yanked text
+augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Title", timeout=300})
+augroup END
 
 "nvim tree settings
 let g:nvim_tree_highlight_opened_files = 1
@@ -116,6 +129,7 @@ nnoremap <M-k> <C-w>k
 " Nvim tree
 "nnoremap <C-n> :lua require'nvimtreebarbar'.toggle_tree()<CR>
 nnoremap <C-n> :NvimTreeToggle<CR>
+nmap <C-n> :lua require'nvimtreebarbar'.toggle_tree()<CR>
 
 " toggleterm.nvim
 nnoremap <leader>t :ToggleTerm size=10<CR>
@@ -123,11 +137,12 @@ nnoremap <leader>g :lua _lazygit_toggle()<CR>i
 
 "telescope
 nnoremap <leader>s :Telescope<CR>
+nnoremap <leader>f :Telescope find_files<CR>
 
 " Python 
 "autocmd FileType python nmap <buffer> <leader>r :w<CR>:split<CR>:term python %<CR>
 "autocmd FileType python nmap <buffer> <leader>r :w<CR>:FloatermNew python %<CR>
-autocmd FileType python nmap <buffer> <leader>r :w<CR>:2TermExec direction='float' cmd='python %'<CR>
+autocmd FileType python nmap <buffer> <leader>r :w<CR>:2TermExec cmd='python %'<CR>
 autocmd FileType python nnoremap <silent> <leader>R  {jV}k:<C-u>MagmaEvaluateVisual<CR>
 autocmd FileType python nnoremap <silent> <leader>Rr :MagmaEvaluateLine<CR>
 autocmd FileType python xnoremap <silent> <leader>R  :<C-u>MagmaEvaluateVisual<CR>
@@ -136,3 +151,6 @@ autocmd FileType python nnoremap <silent> <leader>Rd :MagmaDelete<CR>
 autocmd FileType python nnoremap <buffer> <leader>Ro :MagmaShowOutput<CR>
 autocmd FileType python nnoremap <silent> <leader>c i#------------Test------------#<ESC>bbcw
 
+" Copilot rebind
+ imap <silent><script><expr> <C-a> copilot#Accept("\<CR>")
+        let g:copilot_no_tab_map = v:true
