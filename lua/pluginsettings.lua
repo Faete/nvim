@@ -1,6 +1,21 @@
 local M = {}
 function M.initialize()
-  require("todo-comments").setup{}
+  require("todo-comments").setup{
+    keywords = {
+        FIX = {
+            icon = " ", -- used for the sign, and search results
+            -- can be a hex color, or a named color
+            -- named colors definitions follow below
+            color = "error",
+            -- a set of other keywords that all map to this FIX keywords
+            alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }
+            -- signs = false -- configure signs for some keywords individually
+        },
+        TODO = { icon = " ", color = "info" },
+        WARN = { icon = " ", color = "warning", alt = { "WARNING" } },
+        NOTE = { icon = " ", color = "hint", alt = { "INFO" } }
+    },
+  }
 
     require("transparent").setup({
         enable = true, -- boolean: enable transparent
@@ -58,7 +73,7 @@ function M.initialize()
     vim.notify = require("notify")
     require("notify").setup({
   -- Animation style (see below for details)
-  stages = "fade_in_slide_out",
+  stages = "static",
 
   -- Function called when a new window is opened, use for changing win settings/config
   on_open = nil,
